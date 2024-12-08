@@ -1,14 +1,17 @@
+// 3rd party imports
+
 import styled from 'styled-components';
+import { View, Text } from 'react-native';
 
 export default TrainingDay = ({ dayName }) => {
   return (
-    <DayTraining>
-      <DayTrainingText>{dayName}</DayTrainingText>
-    </DayTraining>
+    <TrainingDayContainer>
+      <TrainingDayName>{dayName}</TrainingDayName>
+    </TrainingDayContainer>
   );
 };
 
-const DayTraining = styled.View`
+const TrainingDayContainer = styled.View`
   justify-content: center;
   width: 90%;
   border: 1px solid gray;
@@ -16,7 +19,7 @@ const DayTraining = styled.View`
   margin: 5%;
 `;
 
-const DayTrainingText = styled.Text`
+const TrainingDayName = styled.Text`
   color: #fff;
   text-align: center;
   font-size: 24px;
