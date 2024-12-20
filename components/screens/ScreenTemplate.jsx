@@ -15,6 +15,6 @@ export default ScreenTemplate = ({ children }) => {
 
 const ScreenContainer = styled.SafeAreaView`
   flex: 1;
-  background-color: #ffffff;
+  background-color: #000000;
   align-items: center;
 `;
