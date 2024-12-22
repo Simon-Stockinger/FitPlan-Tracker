@@ -4,12 +4,12 @@ import React, { createContext, useState } from 'react';
 
 // global constants
 
-import { EMPTY_TRAINING_PLAN } from '../constants/globalConstants';
+import { EMPTY_TRAINING_WEEK } from '../constants/globalConstants';
 
 const TrainingPlanContext = createContext();
 
 export const TrainingPlanProvider = ({ children }) => {
-  const [trainingPlan, setTrainingPlan] = useState(EMPTY_TRAINING_PLAN);
+  const [trainingPlan, setTrainingPlan] = useState(EMPTY_TRAINING_WEEK);
 
   return (
     <TrainingPlanContext.Provider value={[trainingPlan, setTrainingPlan]}>

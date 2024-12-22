@@ -1,11 +1,11 @@
 // Self defined components
 
-import TrainingDay from './TrainingDay';
-import ScreenTemplate from './screens/ScreenTemplate';
+import TrainingDay from '../TrainingDay';
+import ScreenTemplate from './ScreenTemplate';
 
 // Self defined constants
 
-import { WEEK_DAYS } from '../constants/globalConstants';
+import { WEEK_DAYS } from '../../constants/globalConstants';
 
 // 3rd party imports
 

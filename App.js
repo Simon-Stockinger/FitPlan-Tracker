@@ -1,7 +1,7 @@
 // self defined components
 
-import TrainingWeek from './components/TrainingWeek';
-import ExerciseEditor from './components/ExerciseEditor';
+import TrainingWeek from './components/screens/TrainingWeek';
+import ExerciseEditor from './components/screens/ExerciseEditor';
 import { TrainingPlanProvider } from './components/TrainingPlanContext';
 
 // 3rd party imports

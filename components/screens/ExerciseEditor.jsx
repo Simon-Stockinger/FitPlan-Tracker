@@ -7,17 +7,18 @@ import { useContext } from 'react';
 
 // Self defined components
 
-import ScreenTemplate from './screens/ScreenTemplate';
-import TrainingPlanContext from './TrainingPlanContext';
-import { BLANK_EXERCISE } from '../constants/globalConstants';
+import ScreenTemplate from './ScreenTemplate';
+import TrainingPlanContext from '../TrainingPlanContext';
+import { BLANK_EXERCISE } from '../../constants/globalConstants';
 
 const ExerciseEditor = () => {
-  const { dayName, addedExerciseNumber } = useRoute().params;
+  const { dayName, exerciseNumber } = useRoute().params;
   const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
 
   const handleNameInput = (nameInput) => {
     console.log(trainingPlan);
 
+    const exerciseAlreadyExists = trainingPlan[dayName].length === exerciseNumber;
     // const dayAlreadyHasExercise = trainingPlan.hasOwnProperty(dayName) && trainingPlan[dayName];
     // if (dayAlreadyHasExercise()) {
     //   updateExerciseName();

@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 import { useState } from 'react';
 import { BLANK_EXERCISE } from '../constants/globalConstants';
 
-const AddExerciseButton = ({ navigation, dayName, addedExerciseNumber }) => {
+const AddExerciseButton = ({ navigation, dayName, exerciseNumber }) => {
   const [buttonPressed, setButtonPressed] = useState(false);
 
   return (
@@ -15,7 +15,7 @@ const AddExerciseButton = ({ navigation, dayName, addedExerciseNumber }) => {
         setButtonPressed(false);
         navigation.navigate('Exercise Input', {
           dayName: dayName,
-          addedExerciseNumber: addedExerciseNumber,
+          exerciseNumber: exerciseNumber,
         });
       }}
       buttonPressed={buttonPressed}

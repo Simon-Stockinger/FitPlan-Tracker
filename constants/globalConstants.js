@@ -8,7 +8,7 @@ export const WEEK_DAYS = [
   'Sunday',
 ];
 
-export const EMPTY_TRAINING_PLAN = WEEK_DAYS.reduce((acc, day) => {
+export const EMPTY_TRAINING_WEEK = WEEK_DAYS.reduce((acc, day) => {
   acc[day] = [];
   return acc;
 }, {});

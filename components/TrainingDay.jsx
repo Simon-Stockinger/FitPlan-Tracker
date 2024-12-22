@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 // self defined components
 
-import ExerciseEditor from './ExerciseEditor';
+import ExerciseEditor from './screens/ExerciseEditor';
 import AddExerciseButton from './AddExerciseButton';
 import TrainingPlanContext from './TrainingPlanContext';
 
@@ -22,7 +22,7 @@ const TrainingDay = ({ dayName, navigation }) => {
       <AddExerciseButton
         navigation={navigation}
         dayName={dayName}
-        addedExerciseNumber={exercises.length + 1}
+        exerciseNumber={exercises.length + 1}
       />
     </TrainingDayContainer>
   );
