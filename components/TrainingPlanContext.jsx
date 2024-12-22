@@ -4,7 +4,7 @@ import React, { createContext, useState } from 'react';
 
 // global constants
 
-import { EMPTY_TRAINING_WEEK } from '../constants/globalConstants';
+import { EMPTY_TRAINING_WEEK } from 'constants/globalConstants';
 
 const TrainingPlanContext = createContext();
 

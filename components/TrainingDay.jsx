@@ -6,9 +6,8 @@ import { useState } from 'react';
 
 // self defined components
 
-import ExerciseEditor from './screens/ExerciseEditor';
-import AddExerciseButton from './AddExerciseButton';
-import TrainingPlanContext from './TrainingPlanContext';
+import AddExerciseButton from 'components/AddExerciseButton';
+import TrainingPlanContext from 'components/TrainingPlanContext';
 
 import { useContext } from 'react';
 

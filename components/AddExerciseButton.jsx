@@ -3,7 +3,6 @@
 import { Button, Pressable, Text, View } from 'react-native';
 import styled from 'styled-components/native';
 import { useState } from 'react';
-import { BLANK_EXERCISE } from '../constants/globalConstants';
 
 const AddExerciseButton = ({ navigation, dayName, exerciseNumber }) => {
   const [buttonPressed, setButtonPressed] = useState(false);

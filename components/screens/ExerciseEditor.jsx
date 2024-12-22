@@ -7,9 +7,9 @@ import { useContext } from 'react';
 
 // Self defined components
 
-import ScreenTemplate from './ScreenTemplate';
-import TrainingPlanContext from '../TrainingPlanContext';
-import { BLANK_EXERCISE } from '../../constants/globalConstants';
+import ScreenTemplate from 'components/screens/ScreenTemplate';
+import TrainingPlanContext from 'components/TrainingPlanContext';
+import { BLANK_EXERCISE } from 'constants/globalConstants';
 
 const ExerciseEditor = () => {
   const { dayName, exerciseNumber } = useRoute().params;
