@@ -17,17 +17,7 @@ const TrainingWeek = ({ navigation }) => {
     <TrainingDay dayName={weekDayName} key={weekDayName} navigation={navigation} />
   ));
 
-  return (
-    <ScreenTemplate>
-      <WeeksScrollView>{dayTrainingElements}</WeeksScrollView>
-    </ScreenTemplate>
-  );
+  return <ScreenTemplate>{dayTrainingElements}</ScreenTemplate>;
 };
-
-const WeeksScrollView = styled(ScrollView)`
-  background-color: #000;
-  flex-direction: column;
-  padding: 5%;
-`;
 
 export default TrainingWeek;

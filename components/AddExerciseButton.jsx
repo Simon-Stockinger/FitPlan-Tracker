@@ -1,63 +1,22 @@
-// 3rd party imports
+// Self defined components
 
-import { Button, Pressable, Text, View } from 'react-native';
-import styled from 'styled-components/native';
-import { useState } from 'react';
+import DynamicButton from './styled/DynamicButton';
 
 const AddExerciseButton = ({ navigation, dayName, exerciseNumber }) => {
-  const [buttonPressed, setButtonPressed] = useState(false);
+  const onPress = () => {
+    navigation.navigate('Exercise Input', {
+      dayName: dayName,
+      exerciseNumber: exerciseNumber,
+    });
+  };
 
   return (
-    <AddExerciseContainer
-      onPressIn={() => setButtonPressed(true)}
-      onPressOut={() => {
-        setButtonPressed(false);
-        navigation.navigate('Exercise Input', {
-          dayName: dayName,
-          exerciseNumber: exerciseNumber,
-        });
-      }}
-      buttonPressed={buttonPressed}
-    >
-      <PlusSymbolView buttonPressed={buttonPressed}>
-        <PlusSymbolText buttonPressed={buttonPressed}>+</PlusSymbolText>
-      </PlusSymbolView>
-      <LabelText buttonPressed={buttonPressed}>Add Exercise</LabelText>
-    </AddExerciseContainer>
+    <DynamicButton
+      labelText={'Add Exercise'}
+      onPress={onPress}
+      buttonSymbol={{ name: 'plus', size: 24 }}
+    />
   );
 };
-
-const AddExerciseContainer = styled.Pressable`
-  flex-direction: row;
-  gap: 5%;
-  border: 1px solid white;
-  border-radius: 15px;
-  padding: 5%;
-  background-color: ${(props) => (props.buttonPressed ? '#ffffff' : '#000000')};
-`;
-
-const PlusSymbolView = styled(View)`
-  background-color: ${(props) => (props.buttonPressed ? '#000000' : '#ffffff')};
-  aspect-ratio: 1;
-  min-width: 10%;
-  border-radius: 50%;
-  align-items: center; /* Center content horizontally */
-  justify-content: center; /* Center content vertically */
-`;
-
-const AddExerciseText = styled(Text)`
-  font-size: 20px;
-`;
-
-const LabelText = styled(AddExerciseText)`
-  color: ${(props) => (props.buttonPressed ? '#000000' : '#ffffff')};
-`;
-
-const PlusSymbolText = styled(AddExerciseText)`
-  color: ${(props) => (props.buttonPressed ? '#ffffff' : '#000000')};
-  font-weight: 800;
-  font-size: 26px;
-  line-height: 30px;
-`;
 
 export default AddExerciseButton;

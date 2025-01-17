@@ -8,6 +8,7 @@ import { TrainingPlanProvider } from './components/TrainingPlanContext';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import SetupScreen from 'components/screens/SetupScreen';
 
 const Stack = createStackNavigator();
 
@@ -15,7 +16,8 @@ export default function App() {
   return (
     <TrainingPlanProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Training Week" screenOptions={NavigatorStyles}>
+        <Stack.Navigator initialRouteName="Setup Screen" screenOptions={NavigatorStyles}>
+          <Stack.Screen name="Setup Screen" component={SetupScreen} />
           <Stack.Screen name="Training Week" component={TrainingWeek} />
           <Stack.Screen name="Exercise Input" component={ExerciseEditor} />
         </Stack.Navigator>

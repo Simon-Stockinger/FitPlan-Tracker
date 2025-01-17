@@ -1,69 +1,77 @@
-// 3rd party imports
-
-import styled from 'styled-components';
-import { TextInput, View, Text } from 'react-native';
-import { useRoute } from '@react-navigation/native';
-import { useContext } from 'react';
-
 // Self defined components
 
 import ScreenTemplate from 'components/screens/ScreenTemplate';
+import ExerciseInput from 'components/ExerciseEditor/ExerciseInput';
 import TrainingPlanContext from 'components/TrainingPlanContext';
-import { BLANK_EXERCISE } from 'constants/globalConstants';
 
-const ExerciseEditor = () => {
-  const { dayName, exerciseNumber } = useRoute().params;
+import { useContext } from 'react';
+import { useRoute } from '@react-navigation/native';
+import styled from 'styled-components';
+import DynamicButton from 'components/styled/DynamicButton';
+import updateExercise from 'components/ExerciseEditor/updateExercise';
+import leaveEditor from 'components/ExerciseEditor/leaveEditor';
+import deleteExercise from 'components/ExerciseEditor/deleteExercise';
+
+const ExerciseEditor = ({ navigation }) => {
   const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
+  const { dayName, exerciseNumber } = useRoute().params;
 
-  const handleNameInput = (nameInput) => {
-    console.log(trainingPlan);
+  console.log(trainingPlan);
 
-    const exerciseAlreadyExists = trainingPlan[dayName].length === exerciseNumber;
-    // const dayAlreadyHasExercise = trainingPlan.hasOwnProperty(dayName) && trainingPlan[dayName];
-    // if (dayAlreadyHasExercise()) {
-    //   updateExerciseName();
-    // } else {
-    //   createExerciseWithName();
-    // }
-    setTrainingPlan((prevTrainingPlan) => ({
-      ...prevTrainingPlan,
-      [dayName]: [...(prevTrainingPlan[dayName] || []), { ...BLANK_EXERCISE, name: nameInput }],
-    }));
-  };
+  const updateCurrentExercise = (exerciseFieldName, newValue) =>
+    updateExercise(
+      trainingPlan,
+      setTrainingPlan,
+      dayName,
+      exerciseNumber,
+      exerciseFieldName,
+      newValue
+    );
 
   return (
     <ScreenTemplate>
-      <ExerciseContainer>
-        <ExerciseLabel>Exercise Name</ExerciseLabel>
-        <ExerciseInputField
-          onChangeText={handleNameInput}
-          placeholder="Enter exercise name"
-          placeholderTextColor="#fff"
-        />
-      </ExerciseContainer>
+      <ExerciseInput
+        label={'name'}
+        value={trainingPlan[dayName]?.[exerciseNumber - 1]?.['name'] ?? ''}
+        updateExercise={(inputValue) => updateCurrentExercise('name', inputValue)}
+        placeholder="Enter exercise name"
+        keyboardType="default"
+      />
+      <ExerciseInput
+        label={'sets'}
+        value={trainingPlan[dayName]?.[exerciseNumber - 1]?.['sets'] ?? ''}
+        updateExercise={(inputValue) => updateCurrentExercise('sets', inputValue)}
+        placeholder="Enter number of sets"
+        keyboardType="number-pad"
+      />
+      <ExerciseInput
+        label={'reps'}
+        value={trainingPlan[dayName]?.[exerciseNumber - 1]?.['reps'] ?? ''}
+        updateExercise={(inputValue) => updateCurrentExercise('reps', inputValue)}
+        placeholder="Enter number of reps"
+        keyboardType="number-pad"
+      />
+      <ExerciseInput
+        label={'weight'}
+        value={trainingPlan[dayName]?.[exerciseNumber - 1]?.['weight'] ?? ''}
+        updateExercise={(inputValue) => updateCurrentExercise('weight', inputValue)}
+        placeholder="Enter weight"
+        keyboardType="numeric"
+      />
+      <DynamicButton
+        buttonSymbol={{ name: 'check-square', size: 24 }}
+        labelText="Done"
+        onPress={() => leaveEditor(navigation)}
+      />
+      <DynamicButton
+        buttonSymbol={{ name: 'trash', size: 24 }}
+        labelText="Delete Exercise"
+        onPress={() =>
+          deleteExercise(navigation, trainingPlan, setTrainingPlan, dayName, exerciseNumber)
+        }
+      />
     </ScreenTemplate>
   );
 };
-
-const ExerciseContainer = styled(View)`
-  margin: 5%;
-  align-items: center;
-  gap: 10%;
-  width: 80%;
-`;
-
-const ExerciseInputField = styled.TextInput`
-  color: white;
-  font-size: 20px;
-  min-width: 30%;
-  border: 1px solid white;
-  border-radius: 15px;
-  padding: 5%;
-`;
-
-const ExerciseLabel = styled(Text)`
-  color: white;
-  font-size: 20px;
-`;
 
 export default ExerciseEditor;

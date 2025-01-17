@@ -2,14 +2,14 @@
 
 import styled from 'styled-components';
 import { View, Text, TextInput } from 'react-native';
-import { useState } from 'react';
+import { useContext } from 'react';
 
 // self defined components
 
 import AddExerciseButton from 'components/AddExerciseButton';
 import TrainingPlanContext from 'components/TrainingPlanContext';
-
-import { useContext } from 'react';
+import WhiteText from 'components/styled/WhiteText';
+import Exercise from './Exercise';
 
 const TrainingDay = ({ dayName, navigation }) => {
   const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
@@ -18,6 +18,15 @@ const TrainingDay = ({ dayName, navigation }) => {
   return (
     <TrainingDayContainer>
       <TrainingDayHeadline>{dayName}</TrainingDayHeadline>
+      {exercises.map((exercise, index) => (
+        <Exercise
+          key={index}
+          navigation={navigation}
+          exerciseData={exercise}
+          dayName={dayName}
+          exerciseNumber={index + 1}
+        />
+      ))}
       <AddExerciseButton
         navigation={navigation}
         dayName={dayName}
@@ -32,16 +41,11 @@ const TrainingDayContainer = styled(View)`
   width: 90%;
   border: 1px solid white;
   border-radius: 15px;
-  margin: 5%;
+  margin: auto;
   padding: 5%;
 `;
 
-const TrainingDayText = styled(Text)`
-  color: #fff;
-`;
-
-const TrainingDayHeadline = styled(TrainingDayText)`
-  color: #fff;
+const TrainingDayHeadline = styled(WhiteText)`
   text-align: center;
   font-size: 24px;
   font-weight: bold;
