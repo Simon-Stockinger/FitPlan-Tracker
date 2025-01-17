@@ -1,7 +1,7 @@
 import leaveEditor from './leaveEditor';
 
 const deleteExercise = (navigation, trainingPlan, setTrainingPlan, dayName, exerciseNumber) => {
-  const exerciseExists = trainingPlan[dayName]?.[exerciseNumber - 1] != null;
+  const exerciseExists = trainingPlan[dayName]?.[exerciseNumber] != null;
 
   if (!exerciseExists) {
     alert('Cannot delete exercise that is not even created yet!');
@@ -9,9 +9,7 @@ const deleteExercise = (navigation, trainingPlan, setTrainingPlan, dayName, exer
   } else {
     setTrainingPlan((prevTrainingPlan) => ({
       ...prevTrainingPlan,
-      [dayName]: prevTrainingPlan[dayName].filter(
-        (exercise, index) => index !== exerciseNumber - 1
-      ),
+      [dayName]: prevTrainingPlan[dayName].filter((exercise, index) => index !== exerciseNumber),
     }));
     leaveEditor(navigation);
   }

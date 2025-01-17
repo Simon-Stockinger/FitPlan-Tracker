@@ -8,13 +8,13 @@ const updateExercise = (
   exerciseFieldName,
   newValue
 ) => {
-  const exerciseAlreadyExists = trainingPlan[dayName].length >= exerciseNumber;
+  const exerciseAlreadyExists = trainingPlan[dayName].length > exerciseNumber;
 
   if (exerciseAlreadyExists) {
     setTrainingPlan((prevTrainingPlan) => ({
       ...prevTrainingPlan,
       [dayName]: prevTrainingPlan[dayName].map((exercise, index) =>
-        index === exerciseNumber - 1 ? { ...exercise, [exerciseFieldName]: newValue } : exercise
+        index === exerciseNumber ? { ...exercise, [exerciseFieldName]: newValue } : exercise
       ),
     }));
   } else {

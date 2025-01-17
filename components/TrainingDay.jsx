@@ -24,13 +24,13 @@ const TrainingDay = ({ dayName, navigation }) => {
           navigation={navigation}
           exerciseData={exercise}
           dayName={dayName}
-          exerciseNumber={index + 1}
+          exerciseNumber={index}
         />
       ))}
       <AddExerciseButton
         navigation={navigation}
         dayName={dayName}
-        exerciseNumber={exercises.length + 1}
+        exerciseNumber={exercises.length}
       />
     </TrainingDayContainer>
   );
