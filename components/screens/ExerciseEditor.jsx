@@ -59,16 +59,16 @@ const ExerciseEditor = ({ navigation }) => {
         keyboardType="numeric"
       />
       <DynamicButton
-        buttonSymbol={{ name: 'check-square', size: 24 }}
-        labelText="Done"
-        onPress={() => leaveEditor(navigation)}
-      />
-      <DynamicButton
-        buttonSymbol={{ name: 'trash', size: 24 }}
+        buttonSymbol={{ name: 'trash-2', size: 24 }}
         labelText="Delete Exercise"
         onPress={() =>
           deleteExercise(navigation, trainingPlan, setTrainingPlan, dayName, exerciseNumber)
         }
+      />
+      <DynamicButton
+        buttonSymbol={{ name: 'check-square', size: 24 }}
+        labelText="Done"
+        onPress={() => leaveEditor(navigation)}
       />
     </ScreenTemplate>
   );
