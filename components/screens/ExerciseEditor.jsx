@@ -32,28 +32,28 @@ const ExerciseEditor = ({ navigation }) => {
     <ScreenTemplate>
       <ExerciseInput
         label={'name'}
-        value={trainingPlan[dayName]?.[exerciseNumber - 1]?.['name'] ?? ''}
+        value={trainingPlan[dayName]?.[exerciseNumber]?.['name'] ?? ''}
         updateExercise={(inputValue) => updateCurrentExercise('name', inputValue)}
         placeholder="Enter exercise name"
         keyboardType="default"
       />
       <ExerciseInput
         label={'sets'}
-        value={trainingPlan[dayName]?.[exerciseNumber - 1]?.['sets'] ?? ''}
+        value={trainingPlan[dayName]?.[exerciseNumber]?.['sets'] ?? ''}
         updateExercise={(inputValue) => updateCurrentExercise('sets', inputValue)}
         placeholder="Enter number of sets"
         keyboardType="number-pad"
       />
       <ExerciseInput
         label={'reps'}
-        value={trainingPlan[dayName]?.[exerciseNumber - 1]?.['reps'] ?? ''}
+        value={trainingPlan[dayName]?.[exerciseNumber]?.['reps'] ?? ''}
         updateExercise={(inputValue) => updateCurrentExercise('reps', inputValue)}
         placeholder="Enter number of reps"
         keyboardType="number-pad"
       />
       <ExerciseInput
         label={'weight'}
-        value={trainingPlan[dayName]?.[exerciseNumber - 1]?.['weight'] ?? ''}
+        value={trainingPlan[dayName]?.[exerciseNumber]?.['weight'] ?? ''}
         updateExercise={(inputValue) => updateCurrentExercise('weight', inputValue)}
         placeholder="Enter weight"
         keyboardType="numeric"
