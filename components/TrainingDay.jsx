@@ -10,6 +10,7 @@ import AddExerciseButton from 'components/AddExerciseButton';
 import TrainingPlanContext from 'components/TrainingPlanContext';
 import WhiteText from 'components/styled/WhiteText';
 import Exercise from './Exercise';
+import DynamicButton from './styled/DynamicButton';
 
 const TrainingDay = ({ dayName, navigation }) => {
   const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
@@ -17,28 +18,44 @@ const TrainingDay = ({ dayName, navigation }) => {
 
   return (
     <TrainingDayContainer>
-      <TrainingDayHeadline>{dayName}</TrainingDayHeadline>
-      {exercises.map((exercise, index) => (
-        <Exercise
-          key={index}
+      <ExercisesContainer>
+        <TrainingDayHeadline>{dayName}</TrainingDayHeadline>
+        {exercises.map((exercise, index) => (
+          <Exercise
+            key={index}
+            navigation={navigation}
+            exerciseData={exercise}
+            dayName={dayName}
+            exerciseNumber={index}
+          />
+        ))}
+        <AddExerciseButton
           navigation={navigation}
-          exerciseData={exercise}
           dayName={dayName}
-          exerciseNumber={index}
+          exerciseNumber={exercises.length}
         />
-      ))}
-      <AddExerciseButton
-        navigation={navigation}
-        dayName={dayName}
-        exerciseNumber={exercises.length}
+      </ExercisesContainer>
+      <DynamicButton
+        labelText="start workout"
+        buttonSymbol={{ name: 'arrow-right', size: 34 }}
+        direction={'column'}
       />
     </TrainingDayContainer>
   );
 };
 
 const TrainingDayContainer = styled(View)`
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
   justify-content: center;
   width: 90%;
+  margin: auto;
+  padding: 5%;
+`;
+
+const ExercisesContainer = styled(View)`
+  justify-content: center;
   border: 1px solid white;
   border-radius: 15px;
   margin: auto;

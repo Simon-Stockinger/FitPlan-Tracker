@@ -11,12 +11,11 @@ import DynamicButton from 'components/styled/DynamicButton';
 import updateExercise from 'components/ExerciseEditor/updateExercise';
 import leaveEditor from 'components/ExerciseEditor/leaveEditor';
 import deleteExercise from 'components/ExerciseEditor/deleteExercise';
+import { View } from 'react-native';
 
 const ExerciseEditor = ({ navigation }) => {
   const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
   const { dayName, exerciseNumber } = useRoute().params;
-
-  console.log(trainingPlan);
 
   const updateCurrentExercise = (exerciseFieldName, newValue) =>
     updateExercise(
@@ -58,20 +57,28 @@ const ExerciseEditor = ({ navigation }) => {
         placeholder="Enter weight"
         keyboardType="numeric"
       />
-      <DynamicButton
-        buttonSymbol={{ name: 'trash-2', size: 24 }}
-        labelText="Delete Exercise"
-        onPress={() =>
-          deleteExercise(navigation, trainingPlan, setTrainingPlan, dayName, exerciseNumber)
-        }
-      />
-      <DynamicButton
-        buttonSymbol={{ name: 'check-square', size: 24 }}
-        labelText="Done"
-        onPress={() => leaveEditor(navigation)}
-      />
+      <ButtonContainer>
+        <DynamicButton
+          buttonSymbol={{ name: 'trash-2', size: 24 }}
+          labelText="Delete"
+          onPress={() =>
+            deleteExercise(navigation, trainingPlan, setTrainingPlan, dayName, exerciseNumber)
+          }
+        />
+        <DynamicButton
+          buttonSymbol={{ name: 'check-square', size: 24 }}
+          labelText="Done"
+          onPress={() => leaveEditor(navigation)}
+        />
+      </ButtonContainer>
     </ScreenTemplate>
   );
 };
+
+const ButtonContainer = styled(View)`
+  flex-direction: row;
+  gap: 3%;
+  justify-content: space-between;
+`;
 
 export default ExerciseEditor;

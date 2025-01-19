@@ -52,7 +52,7 @@ const StyledTextInput = styled(TextInput)`
 const ExerciseInputContainer = styled(View)`
   border: 1px solid white;
   border-radius: 15px;
-  margin: 5%;
+  margin-bottom: 5%;
   padding: 5%;
 `;
 
