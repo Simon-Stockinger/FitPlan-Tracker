@@ -18,48 +18,66 @@ const TrainingDay = ({ dayName, navigation }) => {
 
   return (
     <TrainingDayContainer>
-      <ExercisesContainer>
-        <TrainingDayHeadline>{dayName}</TrainingDayHeadline>
-        {exercises.map((exercise, index) => (
-          <Exercise
-            key={index}
+      <TrainingDayHeadline>{dayName}</TrainingDayHeadline>
+      <WorkoutContainer>
+        <ExercisesContainer>
+          {exercises.map((exercise, index) => (
+            <Exercise
+              key={index}
+              navigation={navigation}
+              exerciseData={exercise}
+              dayName={dayName}
+              exerciseNumber={index}
+            />
+          ))}
+          <AddExerciseButton
             navigation={navigation}
-            exerciseData={exercise}
             dayName={dayName}
-            exerciseNumber={index}
+            exerciseNumber={exercises.length}
           />
-        ))}
-        <AddExerciseButton
-          navigation={navigation}
-          dayName={dayName}
-          exerciseNumber={exercises.length}
-        />
-      </ExercisesContainer>
-      <DynamicButton
-        labelText="start workout"
-        buttonSymbol={{ name: 'arrow-right', size: 34 }}
-        direction={'column'}
-      />
+        </ExercisesContainer>
+        {exercises.length > 0 && (
+          <ButtonContainer>
+            <DynamicButton
+              labelText="Start workout"
+              buttonSymbol={{ name: 'arrow-right', size: 34 }}
+            />
+          </ButtonContainer>
+        )}
+      </WorkoutContainer>
     </TrainingDayContainer>
   );
 };
 
 const TrainingDayContainer = styled(View)`
   flex: 1;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  width: 90%;
   margin: auto;
   padding: 5%;
+  border: 1px solid white;
+  border-radius: 15px;
+  margin-bottom: 10%;
+`;
+
+const WorkoutContainer = styled(View)`
+  flex: 1;
+  flex-direction: column;
+  gap: 5%;
+  margin: auto;
+  align-items: center;
 `;
 
 const ExercisesContainer = styled(View)`
+  flex: 1;
   justify-content: center;
   border: 1px solid white;
   border-radius: 15px;
   margin: auto;
   padding: 5%;
+`;
+
+const ButtonContainer = styled(View)`
+  flex: 1;
 `;
 
 const TrainingDayHeadline = styled(WhiteText)`
