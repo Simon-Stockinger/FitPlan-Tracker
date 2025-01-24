@@ -54,6 +54,7 @@ const ExerciseInputContainer = styled(View)`
   border-radius: 15px;
   margin-bottom: 5%;
   padding: 5%;
+  min-width: 75%;
 `;
 
 const ExerciseLabel = styled(WhiteText)`

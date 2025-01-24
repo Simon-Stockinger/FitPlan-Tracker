@@ -31,6 +31,7 @@ const DynamicButton = ({ buttonSymbol, labelText, onPress, direction }) => {
 };
 
 const ButtonContainer = styled(Pressable)`
+  flex: 1;
   flex-direction: ${(props) => (props.direction === 'column' ? 'column' : 'row')};
   align-items: center;
   border: 1px solid white;
@@ -44,8 +45,8 @@ const SymbolView = styled(View)`
   background-color: ${(props) => (props.buttonPressed ? '#000000' : '#ffffff')};
   min-width: 10%;
   border-radius: 15px;
-  align-items: center; /* Center content horizontally */
-  justify-content: center; /* Center content vertically */
+  align-items: center;
+  justify-content: center;
   margin-left: ${(props) => (props.direction === 'column' ? '0%' : '5%')};
   margin-top: ${(props) => (props.direction === 'column' ? '5%' : '0%')};
 `;
@@ -55,15 +56,12 @@ const StyledIcon = styled(Icon)`
   justify-content: center;
 `;
 
-const ButtonText = styled(Text)`
+const LabelText = styled(Text)`
   font-size: 20px;
-`;
-
-const LabelText = styled(ButtonText)`
   color: ${(props) => (props.buttonPressed ? '#000000' : '#ffffff')};
   padding: 5%;
-  flex-shrink: 1;
   flex-grow: 1;
+  flex-shrink: 1;
 `;
 
 export default DynamicButton;
