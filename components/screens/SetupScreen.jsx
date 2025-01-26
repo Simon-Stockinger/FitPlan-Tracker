@@ -31,13 +31,11 @@ const SetupScreen = ({ navigation }) => {
 const WelcomeHeadline = styled(WhiteText)`
   font-size: 32px;
   font-weight: bold;
-  text-align: center;
   text-decoration-line: underline;
 `;
 
 const ExplanationText = styled(WhiteText)`
   font-size: 20px;
-  text-align: center;
   padding: 5%;
 `;
 

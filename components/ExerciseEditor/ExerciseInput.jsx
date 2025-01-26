@@ -2,19 +2,15 @@ import styled from 'styled-components';
 import { View, TextInput } from 'react-native';
 
 import WhiteText from 'components/styled/WhiteText';
+import { makeInt, makeNumeric } from 'constants/globalConstants';
 
 const ExerciseInput = ({ label, value, updateExercise, placeholder, keyboardType }) => {
   const sanitizeInput = (input) => {
     switch (keyboardType) {
       case 'numeric':
-        let sanitizedInput = input.replace(/[^0-9.]/g, ''); // Ensure there's only one decimal point
-        const parts = sanitizedInput.split('.');
-        if (parts.length > 2) {
-          sanitizedInput = parts[0] + '.' + parts.slice(1).join('');
-        }
-        return sanitizedInput;
+        return makeNumeric(input);
       case 'number-pad':
-        return input.replace(/[^0-9]/g, '');
+        return makeInt(input);
       case 'default':
       default:
         return input;
@@ -61,7 +57,6 @@ const ExerciseLabel = styled(WhiteText)`
   font-size: 20px;
   font-weight: bold;
   margin: 5%;
-  text-align: center;
 `;
 
 export default ExerciseInput;
