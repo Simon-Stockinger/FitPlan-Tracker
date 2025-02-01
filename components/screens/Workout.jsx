@@ -1,16 +1,12 @@
 // self defined components
 
-import { View } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import RecordedExercise from 'components/Workout/RecordedExercise';
+import WorkoutContainer from 'components/styled/WorkoutContainer';
+import ScreenTemplate from './ScreenTemplate';
 
 // 3rd party imports
 
-import { styled } from 'styled-components';
-
-import RecordedExercise from 'components/Workout/RecordedExercise';
-import WorkoutContainer from 'components/styled/WorkoutContainer';
-
-const { default: ScreenTemplate } = require('./ScreenTemplate');
+import { useRoute } from '@react-navigation/native';
 
 const Workout = ({ navigation }) => {
   const { exercises, dayName } = useRoute().params;
@@ -19,7 +15,7 @@ const Workout = ({ navigation }) => {
     <ScreenTemplate>
       <WorkoutContainer>
         {exercises.map((exercise, index) => (
-          <RecordedExercise exercise={exercise} key={index}></RecordedExercise>
+          <RecordedExercise dayName={dayName} exerciseNumber={index} key={index}></RecordedExercise>
         ))}
       </WorkoutContainer>
     </ScreenTemplate>

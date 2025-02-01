@@ -3,6 +3,7 @@ import { View, TextInput } from 'react-native';
 
 import WhiteText from 'components/styled/WhiteText';
 import { makeInt, makeNumeric } from 'constants/globalConstants';
+import StyledTextInput from 'components/styled/StyledTextInput';
 
 const ExerciseInput = ({ label, value, updateExercise, placeholder, keyboardType }) => {
   const sanitizeInput = (input) => {
@@ -35,15 +36,6 @@ const ExerciseInput = ({ label, value, updateExercise, placeholder, keyboardType
     </ExerciseInputContainer>
   );
 };
-
-const StyledTextInput = styled(TextInput)`
-  color: white;
-  text-align: center;
-  font-size: 20px;
-  padding: 5%;
-  border: 1px solid white;
-  border-radius: 15px;
-`;
 
 const ExerciseInputContainer = styled(View)`
   border: 1px solid white;
