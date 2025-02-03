@@ -8,7 +8,7 @@ import { useContext } from 'react';
 
 import { styled } from 'styled-components';
 
-const SetInput = ({ setNumber, dayName, exerciseNumber }) => {
+const SetInput = ({ setNumber: setIndex, dayName, exerciseNumber }) => {
   const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
   const exerciseData = trainingPlan[dayName][exerciseNumber];
   const plannedReps = exerciseData['reps'];
@@ -16,8 +16,8 @@ const SetInput = ({ setNumber, dayName, exerciseNumber }) => {
   const updatePerformedValue = (valueName, setNumber, newValue) => {
     const updatedExerciseData = {
       ...exerciseData,
-      [valueName]: exerciseData[valueName].map((value, index) =>
-        index === setNumber - 1 ? newValue : value
+      performedSets: exerciseData['performedSets'].map((value, index) =>
+        index === setNumber - 1 ? { ...value, [valueName]: newValue } : value
       ),
     };
 
@@ -29,19 +29,17 @@ const SetInput = ({ setNumber, dayName, exerciseNumber }) => {
     }));
   };
 
-  console.log(trainingPlan[dayName][exerciseNumber]['performedReps']);
-
   const onRepInput = (input) => {
     const sanitizedInput = makeInt(input);
-    updatePerformedValue('performedReps', setNumber, sanitizedInput);
+    updatePerformedValue('performedReps', setIndex, sanitizedInput);
   };
 
   return (
     <SetInputContainer>
-      <SmallHeadline>Set {setNumber}</SmallHeadline>
+      <SmallHeadline>Set {setIndex + 1}</SmallHeadline>
       <StyledTextInput
         placeholder={'Record reps performed'}
-        value={plannedReps}
+        value={exerciseData?.['performedSets']?.[setIndex - 1]?.['performedReps'] ?? plannedReps}
         keyboardType={'number-pad'}
         onChangeText={onRepInput}
         placeholderTextColor="#fff"

@@ -14,8 +14,8 @@ const RecordedExercise = ({ dayName, exerciseNumber }) => {
   const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
   const exerciseData = trainingPlan[dayName][exerciseNumber];
 
-  const createSetInput = (setNumber, plannedReps, plannedWeight) => (
-    <SetInput setNumber={setNumber} dayName={dayName} exerciseNumber={exerciseNumber} />
+  const createSetInput = (setIndex, plannedReps, plannedWeight) => (
+    <SetInput setNumber={setIndex} dayName={dayName} exerciseNumber={exerciseNumber} />
   );
 
   const setInputs = Array.from({ length: exerciseData.sets || 0 }, (_, index) =>

@@ -2,14 +2,17 @@ import { useEffect } from 'react';
 
 const initializeSetsArray = (exerciseData, setTrainingPlan, dayName, exerciseNumber) => {
   useEffect(() => {
-    if (!'performedReps' in exerciseData) {
+    if (!('performedSets' in exerciseData)) {
       setTrainingPlan((prevTrainingPlan) => ({
         ...prevTrainingPlan,
         [dayName]: prevTrainingPlan[dayName].map((exercise, index) =>
           index === exerciseNumber
             ? {
                 ...exercise,
-                performedReps: Array.from({ length: exercise.sets }, () => exercise.reps),
+                performedSets: Array.from({ length: exercise.sets }, () => ({
+                  performedReps: exercise.reps,
+                  performedWeight: exercise.weight,
+                })),
               }
             : exercise
         ),
