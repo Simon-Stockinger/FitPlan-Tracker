@@ -32,6 +32,9 @@ const RecordedExercise = ({ dayName, exerciseNumber }) => {
   );
 };
 
-const ExerciseContainer = styled(Container)``;
+const ExerciseContainer = styled(Container)`
+  padding-top: 0%;
+  margin: 5% 5% 0% 5%;
+`;
 
 export default RecordedExercise;
