@@ -5,13 +5,13 @@ import { useContext } from 'react';
 
 // self defined components
 
-import AddExerciseButton from 'components/TrainingWeek/AddExerciseButton';
 import TrainingPlanContext from 'components/TrainingPlanContext';
 import PlannedExercise from 'components/TrainingWeek/PlannedExercise';
 import DynamicButton from 'components/styled/DynamicButton';
 import WorkoutContainer from 'components/styled/WorkoutContainer';
 import Container from 'components/styled/Container';
 import Headline from 'components/styled/Headline';
+import openExerciseInput from 'utils/openExerciseInput';
 
 const TrainingDay = ({ dayName, navigation }) => {
   const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
@@ -35,10 +35,10 @@ const TrainingDay = ({ dayName, navigation }) => {
               exerciseNumber={index}
             />
           ))}
-          <AddExerciseButton
-            navigation={navigation}
-            dayName={dayName}
-            exerciseNumber={exercises.length}
+          <DynamicButton
+            labelText={'Add Exercise'}
+            onPress={() => openExerciseInput(navigation, dayName, exercises.length)}
+            buttonSymbol={{ name: 'plus', size: 24 }}
           />
         </Container>
         {exercises.length > 0 && (
