@@ -1,14 +1,19 @@
 // 3rd party imports
 
 import styled from 'styled-components';
+import { CommonActions } from '@react-navigation/native';
 
 // Self defined components
 
 import ScreenTemplate from 'components/screens/ScreenTemplate';
 import WhiteText from 'components/styled/WhiteText';
-import StartSetupButton from 'components/StartSetupButton';
+import DynamicButton from 'components/styled/DynamicButton';
 
 const SetupScreen = ({ navigation }) => {
+  const onPress = () => {
+    navigation.dispatch(CommonActions.reset({ index: 0, routes: [{ name: 'Training Week' }] }));
+  };
+
   return (
     <ScreenTemplate>
       <WelcomeHeadline>FitPlan-Tracker</WelcomeHeadline>
@@ -23,7 +28,11 @@ const SetupScreen = ({ navigation }) => {
         You need to choose on which days you want to have your exercise units, which exercises you
         want to do in which unit as well as the volume for each exercise.
       </ExplanationText>
-      <StartSetupButton navigation={navigation} />
+      <DynamicButton
+        labelText={'Start Setup'}
+        buttonSymbol={{ name: 'arrow-right', size: 24 }}
+        onPress={onPress}
+      />
     </ScreenTemplate>
   );
 };
