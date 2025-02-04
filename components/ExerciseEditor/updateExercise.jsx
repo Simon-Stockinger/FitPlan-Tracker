@@ -1,4 +1,4 @@
-import { BLANK_EXERCISE } from 'constants/globalConstants';
+import { BLANK_EXERCISE } from 'constants/BLANK_EXERCISE';
 
 const updateExercise = (
   trainingPlan,

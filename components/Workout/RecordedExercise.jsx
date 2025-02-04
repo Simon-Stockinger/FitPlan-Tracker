@@ -1,14 +1,17 @@
+// self-defined components
+
 import Container from 'components/styled/Container';
 import Headline from 'components/styled/Headline';
-import SetInput from './SetInput';
-import HorizontalSwipeList from './HorizontalSwipeList';
+import TrainingPlanContext from 'components/TrainingPlanContext';
+import initializeSetsArray from 'components/Workout/initializeSetsArray';
+import HorizontalSwipeList from 'components/Workout/HorizontalSwipeList';
+import SetInput from 'components/Workout/SetInput';
+
+// 3rd party imports
 
 import { styled } from 'styled-components';
 import { useContext } from 'react';
-
-import TrainingPlanContext from 'components/TrainingPlanContext';
 import { _Image } from 'react-native';
-import initializeSetsArray from './initializeSetsArray';
 
 const RecordedExercise = ({ dayName, exerciseNumber }) => {
   const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);

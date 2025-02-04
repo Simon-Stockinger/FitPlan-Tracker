@@ -1,5 +1,5 @@
-import { displayExerciseData } from 'constants/globalConstants';
-import DynamicButton from './styled/DynamicButton';
+import { displayExerciseData } from 'utils/displayExerciseData';
+import DynamicButton from 'components/styled/DynamicButton';
 
 const PlannedExercise = ({ navigation, exerciseData, dayName, exerciseNumber }) => {
   return (

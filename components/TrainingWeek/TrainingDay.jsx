@@ -1,18 +1,17 @@
 // 3rd party imports
 
 import styled from 'styled-components';
-import { View, Text, TextInput } from 'react-native';
 import { useContext } from 'react';
 
 // self defined components
 
-import AddExerciseButton from 'components/AddExerciseButton';
+import AddExerciseButton from 'components/TrainingWeek/AddExerciseButton';
 import TrainingPlanContext from 'components/TrainingPlanContext';
-import PlannedExercise from './PlannedExercise';
-import DynamicButton from './styled/DynamicButton';
-import WorkoutContainer from './styled/WorkoutContainer';
-import Container from './styled/Container';
-import Headline from './styled/Headline';
+import PlannedExercise from 'components/TrainingWeek/PlannedExercise';
+import DynamicButton from 'components/styled/DynamicButton';
+import WorkoutContainer from 'components/styled/WorkoutContainer';
+import Container from 'components/styled/Container';
+import Headline from 'components/styled/Headline';
 
 const TrainingDay = ({ dayName, navigation }) => {
   const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);

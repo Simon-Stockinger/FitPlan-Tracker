@@ -1,3 +1,5 @@
+// 3rd party imports
+
 import { useEffect } from 'react';
 
 const initializeSetsArray = (exerciseData, setTrainingPlan, dayName, exerciseNumber) => {

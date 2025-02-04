@@ -1,4 +1,4 @@
-import leaveEditor from './leaveEditor';
+import leaveEditor from 'components/ExerciseEditor/leaveEditor';
 
 const deleteExercise = (navigation, trainingPlan, setTrainingPlan, dayName, exerciseNumber) => {
   const exerciseExists = trainingPlan[dayName]?.[exerciseNumber] != null;

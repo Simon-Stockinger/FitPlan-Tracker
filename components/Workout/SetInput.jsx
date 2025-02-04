@@ -1,12 +1,16 @@
-import ExerciseInput from 'components/ExerciseEditor/ExerciseInput';
+// self-defined components
+
 import Container from 'components/styled/Container';
 import Headline from 'components/styled/Headline';
 import StyledTextInput from 'components/styled/StyledTextInput';
 import WhiteText from 'components/styled/WhiteText';
 import TrainingPlanContext from 'components/TrainingPlanContext';
-import { makeInt, makeNumeric } from 'constants/globalConstants';
-import { useContext } from 'react';
+import { makeInt } from 'utils/makeInt';
+import { makeNumeric } from 'utils/makeNumeric';
 
+// 3rd party imports
+
+import { useContext } from 'react';
 import { styled } from 'styled-components';
 
 const SetInput = ({ setNumber: setIndex, dayName, exerciseNumber }) => {

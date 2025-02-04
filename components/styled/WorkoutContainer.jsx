@@ -1,3 +1,5 @@
+// 3rd party imports
+
 import { View } from 'react-native';
 import { styled } from 'styled-components';
 

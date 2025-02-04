@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { View, TextInput } from 'react-native';
 
 import WhiteText from 'components/styled/WhiteText';
-import { makeInt, makeNumeric } from 'constants/globalConstants';
+import { makeInt } from 'utils/makeInt';
+import { makeNumeric } from 'utils/makeNumeric';
 import StyledTextInput from 'components/styled/StyledTextInput';
 
 const ExerciseInput = ({ label, value, updateExercise, placeholder, keyboardType }) => {

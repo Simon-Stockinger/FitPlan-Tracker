@@ -2,7 +2,7 @@
 
 import RecordedExercise from 'components/Workout/RecordedExercise';
 import WorkoutContainer from 'components/styled/WorkoutContainer';
-import ScreenTemplate from './ScreenTemplate';
+import ScreenTemplate from 'components/screens/ScreenTemplate';
 
 // 3rd party imports
 

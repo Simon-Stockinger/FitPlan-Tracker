@@ -1,3 +1,5 @@
+// 3rd party imports
+
 import React, { useRef, useState } from 'react';
 import { FlatList, View } from 'react-native';
 

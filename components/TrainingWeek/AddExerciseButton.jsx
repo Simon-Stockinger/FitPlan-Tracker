@@ -1,6 +1,6 @@
 // Self defined components
 
-import DynamicButton from './styled/DynamicButton';
+import DynamicButton from 'components/styled/DynamicButton';
 
 const AddExerciseButton = ({ navigation, dayName, exerciseNumber }) => {
   const onPress = () => {

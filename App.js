@@ -1,13 +1,12 @@
-// self defined components
-
-import TrainingWeek from './components/screens/TrainingWeek';
-import ExerciseEditor from './components/screens/ExerciseEditor';
-import { TrainingPlanProvider } from './components/TrainingPlanContext';
+// self-defined components
+import TrainingWeek from 'components/screens/TrainingWeek';
+import ExerciseEditor from 'components/screens/ExerciseEditor';
+import { TrainingPlanProvider } from 'components/TrainingPlanContext';
 import Workout from 'components/screens/Workout';
 import SetupScreen from 'components/screens/SetupScreen';
+import NavigatorStyles from 'styles/NavigatorStyles';
 
 // 3rd party imports
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -27,11 +26,3 @@ export default function App() {
     </TrainingPlanProvider>
   );
 }
-
-const NavigatorStyles = {
-  headerStyle: { backgroundColor: '#000000', borderBottomWidth: 2, borderBottomColor: '#FFF' },
-  headerTintColor: '#FFF',
-  headerTitleStyle: { fontWeight: 'bold' },
-  headerLeftContainerStyle: { paddingLeft: 10 },
-  headerRightContainerStyle: { paddingRight: 10 },
-};

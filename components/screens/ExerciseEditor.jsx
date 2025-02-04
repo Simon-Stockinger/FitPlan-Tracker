@@ -3,14 +3,16 @@
 import ScreenTemplate from 'components/screens/ScreenTemplate';
 import ExerciseInput from 'components/ExerciseEditor/ExerciseInput';
 import TrainingPlanContext from 'components/TrainingPlanContext';
-
-import { useContext } from 'react';
-import { useRoute } from '@react-navigation/native';
-import styled from 'styled-components';
 import DynamicButton from 'components/styled/DynamicButton';
 import updateExercise from 'components/ExerciseEditor/updateExercise';
 import leaveEditor from 'components/ExerciseEditor/leaveEditor';
 import deleteExercise from 'components/ExerciseEditor/deleteExercise';
+
+// 3rd party imports
+
+import { useContext } from 'react';
+import { useRoute } from '@react-navigation/native';
+import styled from 'styled-components';
 import { View } from 'react-native';
 
 const ExerciseEditor = ({ navigation }) => {

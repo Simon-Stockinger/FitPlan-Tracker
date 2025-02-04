@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 // Self defined components
 
-import ScreenTemplate from './ScreenTemplate';
+import ScreenTemplate from 'components/screens/ScreenTemplate';
 import WhiteText from 'components/styled/WhiteText';
 import StartSetupButton from 'components/StartSetupButton';
 

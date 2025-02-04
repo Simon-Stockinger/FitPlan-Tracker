@@ -1,3 +1,5 @@
+// 3rd party imports
+
 import { styled } from 'styled-components';
 import WhiteText from './WhiteText';
 

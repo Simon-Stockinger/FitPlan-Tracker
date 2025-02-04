@@ -2,7 +2,9 @@
 
 import { CommonActions } from '@react-navigation/native';
 
-import DynamicButton from './styled/DynamicButton';
+// self-defined components
+
+import DynamicButton from 'components/styled/DynamicButton';
 
 const StartSetupButton = ({ navigation }) => {
   const onPress = () => {
