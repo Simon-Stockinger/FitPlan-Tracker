@@ -1,17 +1,18 @@
 // 3rd party imports
 
-import styled from 'styled-components';
 import { useContext } from 'react';
 
 // self defined components
 
 import TrainingPlanContext from 'components/TrainingPlanContext';
 import PlannedExercise from 'components/TrainingWeek/PlannedExercise';
+import openExerciseInput from 'utils/openExerciseInput';
+import TrainingDayContainer from 'styles/TrainingWeek/TrainingDayContainer';
+import ButtonContainer from 'styles/TrainingWeek/ButtonContainer';
 import DynamicButton from 'styles/DynamicButton';
 import WorkoutContainer from 'styles/Workout/WorkoutContainer';
 import Container from 'styles/Container';
 import Headline from 'styles/Headline';
-import openExerciseInput from 'utils/openExerciseInput';
 
 const TrainingDay = ({ dayName, navigation }) => {
   const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
@@ -54,13 +55,5 @@ const TrainingDay = ({ dayName, navigation }) => {
     </TrainingDayContainer>
   );
 };
-
-const TrainingDayContainer = styled(Container)`
-  margin-bottom: 10%;
-`;
-
-const ButtonContainer = styled(Container)`
-  border: none;
-`;
 
 export default TrainingDay;
