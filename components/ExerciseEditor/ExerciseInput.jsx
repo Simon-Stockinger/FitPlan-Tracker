@@ -1,10 +1,9 @@
-import styled from 'styled-components';
-import { View, TextInput } from 'react-native';
+// self-defined components
 
-import WhiteText from 'styles/WhiteText';
-import StyledTextInput from 'styles/StyledTextInput';
 import sanitizeInput from 'components/ExerciseEditor/sanitizeInput';
-import Container from 'styles/Container';
+import StyledTextInput from 'styles/StyledTextInput';
+import ExerciseInputContainer from 'styles/ExerciseEditor/ExerciseInputContainer';
+import ExerciseLabel from 'styles/ExerciseEditor/ExerciseLabel';
 
 const ExerciseInput = ({ label, value, updateExercise, placeholder, keyboardType }) => {
   const onChange = (input) => {
@@ -25,17 +24,5 @@ const ExerciseInput = ({ label, value, updateExercise, placeholder, keyboardType
     </ExerciseInputContainer>
   );
 };
-
-const ExerciseInputContainer = styled(Container)`
-  min-width: 75%;
-  margin: 0;
-  margin-bottom: 5%;
-`;
-
-const ExerciseLabel = styled(WhiteText)`
-  font-size: 20px;
-  font-weight: bold;
-  margin: 5%;
-`;
 
 export default ExerciseInput;
