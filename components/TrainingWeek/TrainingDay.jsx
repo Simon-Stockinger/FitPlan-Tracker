@@ -13,6 +13,7 @@ import DynamicButton from 'styles/DynamicButton';
 import WorkoutContainer from 'styles/Workout/WorkoutContainer';
 import Container from 'styles/Container';
 import Headline from 'styles/Headline';
+import addExercise from 'utils/addExercise';
 
 const TrainingDay = ({ dayName, navigation }) => {
   const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
@@ -20,6 +21,11 @@ const TrainingDay = ({ dayName, navigation }) => {
 
   const startWorkout = () => {
     navigation.navigate('Workout', { exercises: exercises, dayName: dayName });
+  };
+
+  const addExerciseAndOpen = () => {
+    addExercise(setTrainingPlan, dayName);
+    openExerciseInput(navigation, dayName, exercises.length);
   };
 
   return (
@@ -38,7 +44,7 @@ const TrainingDay = ({ dayName, navigation }) => {
           ))}
           <DynamicButton
             labelText={'Add Exercise'}
-            onPress={() => openExerciseInput(navigation, dayName, exercises.length)}
+            onPress={addExerciseAndOpen}
             buttonSymbol={{ name: 'plus', size: 24 }}
           />
         </Container>

@@ -1,18 +1,33 @@
-import leaveEditor from 'components/ExerciseEditor/leaveEditor';
+// self-defined components
 
-const deleteExercise = (navigation, trainingPlan, setTrainingPlan, dayName, exerciseNumber) => {
-  const exerciseExists = trainingPlan[dayName]?.[exerciseNumber] != null;
+import { doesExerciseExist } from 'components/ExerciseEditor/doesExerciseExist';
 
-  if (!exerciseExists) {
-    alert('Cannot delete exercise that is not even created yet!');
+const alertNonExistentExercise = () =>
+  alert('Cannot delete exercise that is not even created yet!');
+
+const removeExerciseFromTrainingPlan = (trainingPlan, dayName, exerciseNumber) => ({
+  ...trainingPlan,
+  [dayName]: trainingPlan[dayName].filter((exercise, index) => index !== exerciseNumber),
+});
+
+const applyExerciseDeletion = (setTrainingPlan, dayName, exerciseNumber) =>
+  setTrainingPlan((prevTrainingPlan) =>
+    removeExerciseFromTrainingPlan(prevTrainingPlan, dayName, exerciseNumber)
+  );
+
+const handleDeleteExercise = (
+  navigation,
+  trainingPlan,
+  setTrainingPlan,
+  dayName,
+  exerciseNumber
+) => {
+  if (!doesExerciseExist(trainingPlan, dayName, exerciseNumber)) {
+    alertNonExistentExercise();
     return;
   } else {
-    setTrainingPlan((prevTrainingPlan) => ({
-      ...prevTrainingPlan,
-      [dayName]: prevTrainingPlan[dayName].filter((exercise, index) => index !== exerciseNumber),
-    }));
-    leaveEditor(navigation);
+    applyExerciseDeletion(setTrainingPlan, dayName, exerciseNumber);
   }
 };
 
-export default deleteExercise;
+export default handleDeleteExercise;

@@ -6,13 +6,14 @@ import TrainingPlanContext from 'components/TrainingPlanContext';
 import DynamicButton from 'styles/DynamicButton';
 import updateExercise from 'components/ExerciseEditor/updateExercise';
 import leaveEditor from 'components/ExerciseEditor/leaveEditor';
-import deleteExercise from 'components/ExerciseEditor/deleteExercise';
+import applyExerciseDeletion from 'components/ExerciseEditor/deleteExercise';
 import ButtonContainer from 'styles/ExerciseEditor/ButtonContainer';
 
 // 3rd party imports
 
 import { useContext } from 'react';
 import { useRoute } from '@react-navigation/native';
+import handleDeleteExercise from 'components/ExerciseEditor/deleteExercise';
 
 const ExerciseEditor = ({ navigation }) => {
   const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
@@ -27,6 +28,11 @@ const ExerciseEditor = ({ navigation }) => {
       exerciseFieldName,
       newValue
     );
+
+  const onDeleteButtonClick = () => {
+    handleDeleteExercise(navigation, trainingPlan, setTrainingPlan, dayName, exerciseNumber);
+    leaveEditor(navigation);
+  };
 
   return (
     <ScreenTemplate>
@@ -62,9 +68,7 @@ const ExerciseEditor = ({ navigation }) => {
         <DynamicButton
           buttonSymbol={{ name: 'trash-2', size: 24 }}
           labelText="Delete"
-          onPress={() =>
-            deleteExercise(navigation, trainingPlan, setTrainingPlan, dayName, exerciseNumber)
-          }
+          onPress={onDeleteButtonClick}
         />
         <DynamicButton
           buttonSymbol={{ name: 'check-square', size: 24 }}
