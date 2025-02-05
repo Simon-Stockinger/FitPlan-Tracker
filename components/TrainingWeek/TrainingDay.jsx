@@ -4,7 +4,7 @@ import { useContext } from 'react';
 
 // self defined components
 
-import TrainingPlanContext from 'components/TrainingPlanContext';
+import { useTrainingPlan } from 'components/TrainingPlanContext';
 import PlannedExercise from 'components/TrainingWeek/PlannedExercise';
 import openExerciseInput from 'utils/openExerciseInput';
 import TrainingDayContainer from 'styles/TrainingWeek/TrainingDayContainer';
@@ -16,7 +16,7 @@ import Headline from 'styles/Headline';
 import addExercise from 'utils/addExercise';
 
 const TrainingDay = ({ dayName, navigation }) => {
-  const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
+  const [trainingPlan, setTrainingPlan] = useTrainingPlan();
   const exercises = trainingPlan[dayName] || [];
 
   const startWorkout = () => {

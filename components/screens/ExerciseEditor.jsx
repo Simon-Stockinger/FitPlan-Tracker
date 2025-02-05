@@ -2,7 +2,7 @@
 
 import ScreenTemplate from 'components/screens/ScreenTemplate';
 import ExerciseInput from 'components/ExerciseEditor/ExerciseInput';
-import TrainingPlanContext from 'components/TrainingPlanContext';
+import { useTrainingPlan } from 'components/TrainingPlanContext';
 import DynamicButton from 'styles/DynamicButton';
 import updateExercise from 'components/ExerciseEditor/updateExercise';
 import leaveEditor from 'components/ExerciseEditor/leaveEditor';
@@ -16,7 +16,7 @@ import { useRoute } from '@react-navigation/native';
 import handleDeleteExercise from 'components/ExerciseEditor/deleteExercise';
 
 const ExerciseEditor = ({ navigation }) => {
-  const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
+  const [trainingPlan, setTrainingPlan] = useTrainingPlan;
   const { dayName, exerciseNumber } = useRoute().params;
 
   const updateCurrentExercise = (exerciseFieldName, newValue) =>

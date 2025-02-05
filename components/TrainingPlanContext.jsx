@@ -1,6 +1,6 @@
 // 3rd party imports
 
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 
 // global constants
 
@@ -18,4 +18,6 @@ export const TrainingPlanProvider = ({ children }) => {
   );
 };
 
-export default TrainingPlanContext;
+const useTrainingPlan = () => useContext(TrainingPlanContext);
+
+export { TrainingPlanContext, useTrainingPlan };

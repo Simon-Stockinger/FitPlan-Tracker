@@ -2,7 +2,7 @@
 
 import Container from 'styles/Container';
 import Headline from 'styles/Headline';
-import TrainingPlanContext from 'components/TrainingPlanContext';
+import { useTrainingPlan } from 'components/TrainingPlanContext';
 import initializeSetsArray from 'components/Workout/initializeSetsArray';
 import HorizontalSwipeList from 'components/Workout/HorizontalSwipeList';
 import SetInput from 'components/Workout/SetInput';
@@ -15,7 +15,7 @@ import { useContext } from 'react';
 import { _Image } from 'react-native';
 
 const RecordedExercise = ({ dayName, exerciseNumber }) => {
-  const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
+  const [trainingPlan, setTrainingPlan] = useTrainingPlan();
   const exerciseData = trainingPlan[dayName][exerciseNumber];
 
   const createSetInput = (setIndex) => (

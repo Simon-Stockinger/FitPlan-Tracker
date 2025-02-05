@@ -1,6 +1,6 @@
 // self-defined components
 
-import TrainingPlanContext from 'components/TrainingPlanContext';
+import { useTrainingPlan } from 'components/TrainingPlanContext';
 import DataInput from 'components/Workout/DataInput';
 import { makeInt } from 'utils/makeInt';
 import { makeNumeric } from 'utils/makeNumeric';
@@ -13,7 +13,7 @@ import SmallHeadline from 'styles/Workout/SmallHeadline';
 import { useContext } from 'react';
 
 const SetInput = ({ setIndex, dayName, exerciseNumber }) => {
-  const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
+  const [trainingPlan, setTrainingPlan] = useTrainingPlan();
   const exerciseData = trainingPlan[dayName][exerciseNumber];
   const plannedReps = exerciseData['reps'];
   const plannedWeight = exerciseData['weight'];
