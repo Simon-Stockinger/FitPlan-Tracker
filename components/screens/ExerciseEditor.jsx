@@ -7,13 +7,12 @@ import DynamicButton from 'styles/DynamicButton';
 import updateExercise from 'components/ExerciseEditor/updateExercise';
 import leaveEditor from 'components/ExerciseEditor/leaveEditor';
 import deleteExercise from 'components/ExerciseEditor/deleteExercise';
+import ButtonContainer from 'styles/ExerciseEditor/ButtonContainer';
 
 // 3rd party imports
 
 import { useContext } from 'react';
 import { useRoute } from '@react-navigation/native';
-import styled from 'styled-components';
-import { View } from 'react-native';
 
 const ExerciseEditor = ({ navigation }) => {
   const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
@@ -76,11 +75,5 @@ const ExerciseEditor = ({ navigation }) => {
     </ScreenTemplate>
   );
 };
-
-const ButtonContainer = styled(View)`
-  flex-direction: row;
-  gap: 3%;
-  justify-content: space-between;
-`;
 
 export default ExerciseEditor;
