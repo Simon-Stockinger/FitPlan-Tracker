@@ -7,10 +7,10 @@ import { useContext } from 'react';
 
 import TrainingPlanContext from 'components/TrainingPlanContext';
 import PlannedExercise from 'components/TrainingWeek/PlannedExercise';
-import DynamicButton from 'components/styled/DynamicButton';
-import WorkoutContainer from 'components/styled/WorkoutContainer';
-import Container from 'components/styled/Container';
-import Headline from 'components/styled/Headline';
+import DynamicButton from 'styles/DynamicButton';
+import WorkoutContainer from 'styles/Workout/WorkoutContainer';
+import Container from 'styles/Container';
+import Headline from 'styles/Headline';
 import openExerciseInput from 'utils/openExerciseInput';
 
 const TrainingDay = ({ dayName, navigation }) => {

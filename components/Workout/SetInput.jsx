@@ -1,30 +1,29 @@
 // self-defined components
 
-import Container from 'components/styled/Container';
-import Headline from 'components/styled/Headline';
-import StyledTextInput from 'components/styled/StyledTextInput';
-import WhiteText from 'components/styled/WhiteText';
 import TrainingPlanContext from 'components/TrainingPlanContext';
+import DataInput from 'components/Workout/DataInput';
 import { makeInt } from 'utils/makeInt';
 import { makeNumeric } from 'utils/makeNumeric';
+import DataInputContainer from 'styles/Workout/DataInputContainer';
+import SetInputContainer from 'styles/Workout/SetInputContainer';
+import SmallHeadline from 'styles/Workout/SmallHeadline';
 
 // 3rd party imports
 
 import { useContext } from 'react';
-import { styled } from 'styled-components';
 
-const SetInput = ({ setNumber: setIndex, dayName, exerciseNumber }) => {
+const SetInput = ({ setIndex, dayName, exerciseNumber }) => {
   const [trainingPlan, setTrainingPlan] = useContext(TrainingPlanContext);
   const exerciseData = trainingPlan[dayName][exerciseNumber];
   const plannedReps = exerciseData['reps'];
   const plannedWeight = exerciseData['weight'];
-  const performedSets = exerciseData?.['performedSets']?.[setIndex - 1];
+  const performedSets = exerciseData?.['performedSets']?.[setIndex];
 
-  const updatePerformedValue = (valueName, setNumber, newValue) => {
+  const updatePerformedValue = (valueName, setIndex, newValue) => {
     const updatedExerciseData = {
       ...exerciseData,
       performedSets: exerciseData['performedSets'].map((value, index) =>
-        index === setNumber - 1 ? { ...value, [valueName]: newValue } : value
+        index === setIndex ? { ...value, [valueName]: newValue } : value
       ),
     };
 
@@ -48,60 +47,23 @@ const SetInput = ({ setNumber: setIndex, dayName, exerciseNumber }) => {
 
   return (
     <SetInputContainer>
-      <SmallHeadline>Set {setIndex}</SmallHeadline>
-      <BottomContainer>
-        <InputContainer>
-          <InputLabel>Reps</InputLabel>
-          <StyledTextInput
-            placeholder={'Record reps performed'}
-            value={performedSets?.['performedReps'] ?? plannedReps}
-            keyboardType={'number-pad'}
-            onChangeText={onRepInput}
-            placeholderTextColor="#fff"
-          />
-        </InputContainer>
-        <InputContainer>
-          <InputLabel>Weight</InputLabel>
-          <StyledTextInput
-            placeholder={'Record weight performed'}
-            value={performedSets?.['performedWeight'] ?? plannedWeight}
-            keyboardType={'numeric'}
-            onChangeText={onWeightInput}
-            placeholderTextColor="#fff"
-          />
-        </InputContainer>
-      </BottomContainer>
+      <SmallHeadline>Set {setIndex + 1}</SmallHeadline>
+      <DataInputContainer>
+        <DataInput
+          dataName={'Reps'}
+          value={performedSets?.['performedReps'] ?? plannedReps}
+          keyboardType={'number-pad'}
+          onChangeInput={onRepInput}
+        />
+        <DataInput
+          dataName={'Weight'}
+          value={performedSets?.['performedWeight'] ?? plannedWeight}
+          keyboardType={'numeric'}
+          onChangeInput={onWeightInput}
+        />
+      </DataInputContainer>
     </SetInputContainer>
   );
 };
-
-const SmallHeadline = styled(Headline)`
-  font-size: 22px;
-  padding: 0;
-`;
-
-const BottomContainer = styled(Container)`
-  flex: 1;
-  flex-direction: row;
-  border: none;
-  margin-top: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-`;
-
-const InputContainer = styled(Container)`
-  flex: 1;
-  flex-direction: column;
-  border: none;
-`;
-
-const InputLabel = styled(WhiteText)`
-  font-size: 18px;
-  margin-bottom: 5%;
-`;
-
-const SetInputContainer = styled(Container)`
-  width: 90%;
-`;
 
 export default SetInput;

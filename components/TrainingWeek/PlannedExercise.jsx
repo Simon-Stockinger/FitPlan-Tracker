@@ -1,5 +1,5 @@
 import { displayExerciseData } from 'utils/displayExerciseData';
-import DynamicButton from 'components/styled/DynamicButton';
+import DynamicButton from 'styles/DynamicButton';
 import openExerciseInput from 'utils/openExerciseInput';
 
 const PlannedExercise = ({ navigation, exerciseData, dayName, exerciseNumber }) => {

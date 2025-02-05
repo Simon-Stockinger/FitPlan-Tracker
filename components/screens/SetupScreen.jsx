@@ -6,8 +6,8 @@ import { CommonActions } from '@react-navigation/native';
 // Self defined components
 
 import ScreenTemplate from 'components/screens/ScreenTemplate';
-import WhiteText from 'components/styled/WhiteText';
-import DynamicButton from 'components/styled/DynamicButton';
+import WhiteText from 'styles/WhiteText';
+import DynamicButton from 'styles/DynamicButton';
 
 const SetupScreen = ({ navigation }) => {
   const onPress = () => {

@@ -1,26 +1,14 @@
 import styled from 'styled-components';
 import { View, TextInput } from 'react-native';
 
-import WhiteText from 'components/styled/WhiteText';
-import { makeInt } from 'utils/makeInt';
-import { makeNumeric } from 'utils/makeNumeric';
-import StyledTextInput from 'components/styled/StyledTextInput';
+import WhiteText from 'styles/WhiteText';
+import StyledTextInput from 'styles/StyledTextInput';
+import sanitizeInput from 'components/ExerciseEditor/sanitizeInput';
+import Container from 'styles/Container';
 
 const ExerciseInput = ({ label, value, updateExercise, placeholder, keyboardType }) => {
-  const sanitizeInput = (input) => {
-    switch (keyboardType) {
-      case 'numeric':
-        return makeNumeric(input);
-      case 'number-pad':
-        return makeInt(input);
-      case 'default':
-      default:
-        return input;
-    }
-  };
-
   const onChange = (input) => {
-    const sanitizedInput = sanitizeInput(input);
+    const sanitizedInput = sanitizeInput(input, keyboardType);
     updateExercise(sanitizedInput);
   };
 
@@ -38,12 +26,10 @@ const ExerciseInput = ({ label, value, updateExercise, placeholder, keyboardType
   );
 };
 
-const ExerciseInputContainer = styled(View)`
-  border: 1px solid white;
-  border-radius: 15px;
-  margin-bottom: 5%;
-  padding: 5%;
+const ExerciseInputContainer = styled(Container)`
   min-width: 75%;
+  margin: 0;
+  margin-bottom: 5%;
 `;
 
 const ExerciseLabel = styled(WhiteText)`

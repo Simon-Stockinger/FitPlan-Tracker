@@ -1,7 +1,7 @@
 // self defined components
 
 import RecordedExercise from 'components/Workout/RecordedExercise';
-import WorkoutContainer from 'components/styled/WorkoutContainer';
+import WorkoutContainer from 'styles/Workout/WorkoutContainer';
 import ScreenTemplate from 'components/screens/ScreenTemplate';
 
 // 3rd party imports
