@@ -9,7 +9,7 @@ import WhiteText from 'styles/WhiteText';
 const ExerciseLabel = styled(WhiteText)`
   font-size: 20px;
   font-weight: bold;
-  margin: 5%;
+  margin-bottom: 5%;
 `;
 
 export default ExerciseLabel;

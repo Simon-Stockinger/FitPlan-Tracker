@@ -2,68 +2,28 @@
 
 import ScreenTemplate from 'components/screens/ScreenTemplate';
 import ExerciseInput from 'components/ExerciseEditor/ExerciseInput';
-import { useTrainingPlan } from 'components/TrainingPlanContext';
 import DynamicButton from 'styles/DynamicButton';
-import updateExercise from 'components/ExerciseEditor/updateExercise';
 import leaveEditor from 'components/ExerciseEditor/leaveEditor';
-import applyExerciseDeletion from 'components/ExerciseEditor/deleteExercise';
 import ButtonContainer from 'styles/ExerciseEditor/ButtonContainer';
-
-// 3rd party imports
-
-import { useContext } from 'react';
-import { useRoute } from '@react-navigation/native';
-import handleDeleteExercise from 'components/ExerciseEditor/deleteExercise';
+import useExerciseActions from 'components/ExerciseEditor/useExerciseActions';
+import inputConfig from 'components/ExerciseEditor/inputConfig';
 
 const ExerciseEditor = ({ navigation }) => {
-  const [trainingPlan, setTrainingPlan] = useTrainingPlan;
-  const { dayName, exerciseNumber } = useRoute().params;
-
-  const updateCurrentExercise = (exerciseFieldName, newValue) =>
-    updateExercise(
-      trainingPlan,
-      setTrainingPlan,
-      dayName,
-      exerciseNumber,
-      exerciseFieldName,
-      newValue
-    );
-
-  const onDeleteButtonClick = () => {
-    handleDeleteExercise(navigation, trainingPlan, setTrainingPlan, dayName, exerciseNumber);
-    leaveEditor(navigation);
-  };
+  const { trainingPlan, dayName, exerciseNumber, updateCurrentExercise, onDeleteButtonClick } =
+    useExerciseActions(navigation);
 
   return (
     <ScreenTemplate>
-      <ExerciseInput
-        label={'name'}
-        value={trainingPlan[dayName]?.[exerciseNumber]?.['name'] ?? ''}
-        updateExercise={(inputValue) => updateCurrentExercise('name', inputValue)}
-        placeholder="Enter exercise name"
-        keyboardType="default"
-      />
-      <ExerciseInput
-        label={'sets'}
-        value={trainingPlan[dayName]?.[exerciseNumber]?.['sets'] ?? ''}
-        updateExercise={(inputValue) => updateCurrentExercise('sets', inputValue)}
-        placeholder="Enter number of sets"
-        keyboardType="number-pad"
-      />
-      <ExerciseInput
-        label={'reps'}
-        value={trainingPlan[dayName]?.[exerciseNumber]?.['reps'] ?? ''}
-        updateExercise={(inputValue) => updateCurrentExercise('reps', inputValue)}
-        placeholder="Enter number of reps"
-        keyboardType="number-pad"
-      />
-      <ExerciseInput
-        label={'weight'}
-        value={trainingPlan[dayName]?.[exerciseNumber]?.['weight'] ?? ''}
-        updateExercise={(inputValue) => updateCurrentExercise('weight', inputValue)}
-        placeholder="Enter weight"
-        keyboardType="numeric"
-      />
+      {inputConfig.map(({ label, placeholder, keyboardType }) => (
+        <ExerciseInput
+          key={label}
+          label={label}
+          value={trainingPlan[dayName]?.[exerciseNumber]?.[label] ?? ''}
+          updateExercise={(inputValue) => updateCurrentExercise(label, inputValue)}
+          placeholder={placeholder}
+          keyboardType={keyboardType}
+        />
+      ))}
       <ButtonContainer>
         <DynamicButton
           buttonSymbol={{ name: 'trash-2', size: 24 }}
