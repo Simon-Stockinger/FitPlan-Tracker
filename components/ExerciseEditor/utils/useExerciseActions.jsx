@@ -1,9 +1,10 @@
 import { useCallback } from 'react';
 import { useTrainingPlan } from 'components/TrainingPlanContext';
-import updateExercise from 'components/ExerciseEditor/updateExercise';
-import handleDeleteExercise from 'components/ExerciseEditor/deleteExercise';
-import leaveEditor from 'components/ExerciseEditor/leaveEditor';
+import applyExerciseUpdate from 'components/ExerciseEditor/utils/applyExerciseUpdate';
+import handleDeleteExercise from 'components/ExerciseEditor/utils/applyExerciseDeletion';
+import leaveEditor from 'components/ExerciseEditor/utils/leaveEditor';
 import { useRoute } from '@react-navigation/native';
+import applyExerciseDeletion from 'components/ExerciseEditor/utils/applyExerciseDeletion';
 
 const useExerciseActions = (navigation) => {
   const [trainingPlan, setTrainingPlan] = useTrainingPlan();
@@ -11,15 +12,15 @@ const useExerciseActions = (navigation) => {
 
   const updateCurrentExercise = useCallback(
     (exerciseFieldName, newValue) => {
-      updateExercise(setTrainingPlan, dayName, exerciseNumber, exerciseFieldName, newValue);
+      applyExerciseUpdate(setTrainingPlan, dayName, exerciseNumber, exerciseFieldName, newValue);
     },
     [setTrainingPlan, dayName, exerciseNumber]
   );
 
   const onDeleteButtonClick = useCallback(() => {
-    handleDeleteExercise(navigation, trainingPlan, setTrainingPlan, dayName, exerciseNumber);
+    applyExerciseDeletion(setTrainingPlan, dayName, exerciseNumber);
     leaveEditor(navigation);
-  }, [navigation, trainingPlan, setTrainingPlan, dayName, exerciseNumber]);
+  }, [navigation, setTrainingPlan, dayName, exerciseNumber]);
 
   return {
     trainingPlan,

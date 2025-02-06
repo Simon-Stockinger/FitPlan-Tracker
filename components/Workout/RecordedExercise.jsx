@@ -10,8 +10,6 @@ import ExerciseContainer from 'styles/Workout/ExerciseContainer';
 
 // 3rd party imports
 
-import { styled } from 'styled-components';
-import { useContext } from 'react';
 import { _Image } from 'react-native';
 
 const RecordedExercise = ({ dayName, exerciseNumber }) => {

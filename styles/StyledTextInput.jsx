@@ -10,6 +10,7 @@ const StyledTextInput = styled(TextInput)`
   font-size: 20px;
   border: 1px solid white;
   border-radius: 15px;
+  min-height: 44px;
 `;
 
 StyledTextInput.defaultProps = {

@@ -2,40 +2,31 @@
 
 import ScreenTemplate from 'components/screens/ScreenTemplate';
 import ExerciseInput from 'components/ExerciseEditor/ExerciseInput';
-import DynamicButton from 'styles/DynamicButton';
-import leaveEditor from 'components/ExerciseEditor/leaveEditor';
-import ButtonContainer from 'styles/ExerciseEditor/ButtonContainer';
-import useExerciseActions from 'components/ExerciseEditor/useExerciseActions';
+import useExerciseActions from 'components/ExerciseEditor/utils/useExerciseActions';
 import inputConfig from 'components/ExerciseEditor/inputConfig';
+import EditorButtons from 'components/ExerciseEditor/EditorButtons';
 
 const ExerciseEditor = ({ navigation }) => {
-  const { trainingPlan, dayName, exerciseNumber, updateCurrentExercise, onDeleteButtonClick } =
+  const { trainingPlan, dayName, exerciseNumber, updateCurrentExercise } =
     useExerciseActions(navigation);
+
+  const makeExerciseInput = ({ label, placeholder, keyboardType }) => (
+    <ExerciseInput
+      key={label}
+      label={label}
+      value={trainingPlan[dayName]?.[exerciseNumber]?.[label] ?? ''}
+      updateExercise={(inputValue) => updateCurrentExercise(label, inputValue)}
+      placeholder={placeholder}
+      keyboardType={keyboardType}
+    />
+  );
+
+  const exerciseInputs = inputConfig.map(makeExerciseInput);
 
   return (
     <ScreenTemplate>
-      {inputConfig.map(({ label, placeholder, keyboardType }) => (
-        <ExerciseInput
-          key={label}
-          label={label}
-          value={trainingPlan[dayName]?.[exerciseNumber]?.[label] ?? ''}
-          updateExercise={(inputValue) => updateCurrentExercise(label, inputValue)}
-          placeholder={placeholder}
-          keyboardType={keyboardType}
-        />
-      ))}
-      <ButtonContainer>
-        <DynamicButton
-          buttonSymbol={{ name: 'trash-2', size: 24 }}
-          labelText="Delete"
-          onPress={onDeleteButtonClick}
-        />
-        <DynamicButton
-          buttonSymbol={{ name: 'check-square', size: 24 }}
-          labelText="Done"
-          onPress={() => leaveEditor(navigation)}
-        />
-      </ButtonContainer>
+      {exerciseInputs}
+      <EditorButtons />
     </ScreenTemplate>
   );
 };

@@ -1,6 +1,6 @@
 // self-defined components
 
-import sanitizeInput from 'components/ExerciseEditor/sanitizeInput';
+import sanitizeInput from 'components/ExerciseEditor/utils/sanitizeInput';
 import StyledTextInput from 'styles/StyledTextInput';
 import ExerciseInputContainer from 'styles/ExerciseEditor/ExerciseInputContainer';
 import ExerciseLabel from 'styles/ExerciseEditor/ExerciseLabel';

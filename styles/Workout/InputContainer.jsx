@@ -7,7 +7,6 @@ import { styled } from 'styled-components';
 import Container from 'styles/Container';
 
 const InputContainer = styled(Container)`
-  flex: 1;
   flex-direction: column;
   border: none;
   padding: 0%;
